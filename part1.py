@@ -132,8 +132,8 @@ and False otherwise.
 
 def q2(dfs):
     shapes_same = dfs[0].shape == dfs[1].shape == dfs[2].shape
-    columns_correct = list(dfs[0].columns) == NEW_COLUMNS
-    return shapes_same and columns_correct
+    columns_correct = list(dfs[0].columns) == NEW_COLUMNS #checking the column order 
+    return shapes_same and columns_correct #see if both checks pass
 """
     Input: Assume the input is provided by load_input()
 
@@ -184,14 +184,11 @@ remember to check the output in part1-answers.txt.
 (True if the checks pass, and False otherwise)
 """
 
-def q3(dfs):
+def q3(dfs): # check if university sets are identical across all years
     sets_same = set(dfs[0]['university']) == set(dfs[1]['university']) == set(dfs[2]['university'])
     return sets_same
-    # Check:
-    # - that the set of university names in each year is the same
-    # Return:
-    # - True if they are the same, and False otherwise.
-    raise NotImplementedError
+
+
 
 """
 3b (commentary).
@@ -225,7 +222,7 @@ Hint:
 """
 
 def q4(dfs):
-    sample_2021 = dfs[2].sample(5)['university'].tolist()
+    sample_2021 = dfs[2].sample(5)['university'].tolist() # random sample converted to list
     return sample_2021
 
 """
