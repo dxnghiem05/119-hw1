@@ -1,7 +1,7 @@
 q1,3
 q2,True
 q3a,False
-q4,['University of Southampton', 'Pohang University of Science And Technology (POSTECH)', 'University of Zurich', 'National University of Singapore (NUS)', 'Northwestern University']
+q4,['The Chinese University of Hong Kong (CUHK)', 'University of Zurich', 'University of Copenhagen', 'The Hong Kong University of Science and Technology', 'University of Pennsylvania']
 q5a,[100, 100, 100, 100, 100, 100, 100, 100]
 q5b,[100, 100, 100, 100, 100, 100, 100, 100]
 q5c,100
@@ -27,4 +27,3 @@ q18,output/part1-18.png
 q20a,101.0
 q20b,['University of California, Berkeley (UCB)', 'Massachusetts Institute of Technology (MIT)', 'Stanford University', 'Harvard University', 'University of Oxford', 'California Institute of Technology (Caltech)', 'ETH Zurich - Swiss Federal Institute of Technology', 'University of Cambridge', 'UCL', 'Imperial College London']
 q21,['University of California, Berkeley (UCB)', 'Massachusetts Institute of Technology (MIT)', 'Stanford University', 'Harvard University', 'University of Oxford', 'California Institute of Technology (Caltech)', 'ETH Zurich - Swiss Federal Institute of Technology', 'University of Cambridge', 'UCL', 'Imperial College London']
-PART 1,0

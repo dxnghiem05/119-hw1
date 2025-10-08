@@ -131,11 +131,16 @@ def add_list(l):
     return total
 
 def q2a():
+    # create a throughput helper and register three pipelines of different sizes
     h = ThroughputHelper()
     h.add_pipeline("small", len(LIST_SMALL), lambda: add_list(LIST_SMALL))
     h.add_pipeline("medium", len(LIST_MEDIUM), lambda: add_list(LIST_MEDIUM))
     h.add_pipeline("large", len(LIST_LARGE), lambda: add_list(LIST_LARGE))
+
+    # measure throughputs for the registered pipelines
     throughputs = h.compare_throughput()
+
+    # save a bar plot of the measured throughputs
     h.generate_plot("output/part2-q2a.png")
     return throughputs
 
@@ -230,10 +235,13 @@ on a single list item.
 LIST_SINGLE_ITEM = [10] # Note: a list with only 1 item
 
 def q4a():
+    # create a latency helper and add three identical single-item runs
     h = LatencyHelper()
     h.add_pipeline("run1", lambda: add_list(LIST_SINGLE_ITEM))
     h.add_pipeline("run2", lambda: add_list(LIST_SINGLE_ITEM))
     h.add_pipeline("run3", lambda: add_list(LIST_SINGLE_ITEM))
+
+    # measure average latency for each pipeline and save a plot
     latencies = h.compare_latency()
     h.generate_plot("output/part2-q4a.png")
     return latencies
@@ -265,11 +273,13 @@ of the pipeline in part 1.
 # part1.PART_1_PIPELINE
 
 def q5a():
+    # measure throughput of running the entire part1 pipeline
     h = ThroughputHelper()
     h.add_pipeline("part1", 1, lambda: part1.PART_1_PIPELINE())
     return h.compare_throughput()
 
 def q5b():
+    # measure latency (avg ms per run) of running the entire part1 pipeline
     h = LatencyHelper()
     h.add_pipeline("part1", lambda: part1.PART_1_PIPELINE())
     return h.compare_latency()
@@ -336,9 +346,10 @@ def load_input(filename="data/population.csv"):
     return df
 
 def population_pipeline(df):
-    grouped = df.groupby("country")  # <-- use "country" now
+    grouped = df.groupby("country")  # use "country" now
     pop_change = (grouped["population"].max() - grouped["population"].min()) / \
                  (grouped["year"].max() - grouped["year"].min())
+    # drop na values that result from single-year countries
     pop_change = pop_change[pop_change.notna()]
     desc = pop_change.describe()
     return [desc["min"], desc["50%"], desc["max"], desc["mean"], desc["std"]]
@@ -394,6 +405,7 @@ def q7():
     m = load_input_medium()
     l = load_input_large()
     x = load_input_single_row()
+    # return lengths of dataframes to indicate sizes used
     return [len(s), len(m), len(l), len(x)]
 
 """
@@ -477,6 +489,7 @@ def fromvar_latency():
     return population_pipeline(POPULATION_SINGLE_ROW)
 
 def q9a():
+    # construct a throughput helper comparing file-based vs in-memory pipelines
     h = ThroughputHelper()
     h.add_pipeline("baseline_small", len(POPULATION_SMALL), baseline_small)
     h.add_pipeline("baseline_medium", len(POPULATION_MEDIUM), baseline_medium)
@@ -484,11 +497,13 @@ def q9a():
     h.add_pipeline("fromvar_small", len(POPULATION_SMALL), fromvar_small)
     h.add_pipeline("fromvar_medium", len(POPULATION_MEDIUM), fromvar_medium)
     h.add_pipeline("fromvar_large", len(POPULATION_LARGE), fromvar_large)
+    # measure throughputs and save a plot
     tputs = h.compare_throughput()
     h.generate_plot("output/part2-q9a.png")
     return tputs
 
 def q9b():
+    # compare latency for file-based vs in-memory single-row pipelines
     h = LatencyHelper()
     h.add_pipeline("baseline_latency", baseline_latency)
     h.add_pipeline("fromvar_latency", fromvar_latency)
@@ -536,9 +551,11 @@ Create a new pipeline:
 """
 
 def for_loop_pipeline(df):
+    # manually compute per-country year-over-year population change using python loops
     results = []
     for country, data in df.groupby("country"):
         if len(data["year"].unique()) < 2:
+            # skip countries with only a single year of data
             continue
         pop_change = (data["population"].max() - data["population"].min()) / \
                      (data["year"].max() - data["year"].min())
