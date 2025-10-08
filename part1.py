@@ -239,10 +239,10 @@ and 3 weaknesses of this dataset.
 === ANSWER Q4b BELOW ===
 Strengths:
 1. it covers multiple years so we can analyze trends over a set time
-2.has multiple attributes such as academic reputation, citations for more analysis
+2. has multiple attributes such as academic reputation, citations for more analysis
 
 Weaknesses:
-1.missing values, specifically in overall score
+1. missing values, specifically in overall score
 2. global coverage is limited, since this is only top 100
 3. data can be inconsistent year to year
 === END OF Q4b ANSWER ===
@@ -303,38 +303,38 @@ We need to import pytest first.
 
 import pytest
 
-"""
-The following are a few unit tests for Q1-5.
 
-To run the unit tests,
-first, remove (or comment out) the `@pytest.mark.skip` decorator
-from each unit test (function beginning with `test_`).
-Then, run `pytest part1.py` in the terminal.
-"""
+#The following are a few unit tests for Q1-5.
 
-@pytest.mark.skip
+#To run the unit tests,
+#first, remove (or comment out) the `@pytest.mark.skip` decorator
+#from each unit test (function beginning with `test_`).
+#Then, run `pytest part1.py` in the terminal.
+
+
+#@pytest.mark.skip
 def test_q1():
     dfs = load_input()
     assert len(dfs) == 3
     assert all([isinstance(df, pd.DataFrame) for df in dfs])
 
-@pytest.mark.skip
+#@pytest.mark.skip
 def test_q2():
     dfs = load_input()
     assert q2(dfs)
 
-@pytest.mark.skip
+#@pytest.mark.skip
 def test_q3():
     dfs = load_input()
     assert q3(dfs)
 
-@pytest.mark.skip
+#@pytest.mark.skip
 def test_q4():
     dfs = load_input()
     samples = q4(dfs)
     assert len(samples) == 5
 
-@pytest.mark.skip
+#@pytest.mark.skip
 def test_q5():
     dfs = load_input()
     answers = q5a(dfs) + q5b(dfs)
@@ -409,7 +409,7 @@ def q8a(dfs):
 Do you notice some trend? Comment on what you observe and why might that be consistent throughout the years.
 
 === ANSWER Q8b BELOW ===
-USA has the most universities in the top 100 across the years. This is possible because of funding for research and its global reputation
+USA consistently has the most universities in the Top 100. This likely reflects strong funding for research, well-established programs, and an international reputation for quality education.
 === END OF Q8b ANSWER ===
 """
 
@@ -497,7 +497,8 @@ Comment on why the country above is at the top of the list.
 (Note: This is an open-ended question.)
 
 === ANSWER Q12b BELOW ===
-Signapore was at the top of the rankings since it scores consistently high in all the major metrics. This could indicate that their system is well-funded and research intensive
+Singapore tops the ranking because it performs well across all major metrics. 
+This shows that their universities are well-supported, focus on research, and maintain high academic stand
 === END OF Q12b ANSWER ===
 """
 
