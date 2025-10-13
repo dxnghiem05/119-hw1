@@ -1,7 +1,7 @@
 q1,3
 q2,True
 q3a,False
-q4,['University of St Andrews', 'University of Birmingham', 'The University of Warwick', 'The University of Tokyo', 'University of California, Berkeley (UCB)']
+q4,['Pennsylvania State University', 'City University of Hong Kong', 'UCL', 'Technical University of Munich', 'University of Washington']
 q5a,[100, 100, 100, 100, 100, 100, 100, 100]
 q5b,[100, 100, 100, 100, 100, 100, 100, 100]
 q5c,100
